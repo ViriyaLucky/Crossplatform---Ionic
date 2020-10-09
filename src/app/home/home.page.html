@@ -1,20 +1,58 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="shopMenu" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon slot="start" (click)="changeLayout()" size="large" name="{{iconName}}"></ion-icon>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Home
     </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div *ngIf="listView" >
+    <ion-list *ngFor="let product of products; index as i">
+      <!-- list view -->
+      <ion-item  [routerLink]="['./', product.id]">
+        <ion-thumbnail slot="start">
+          <ion-img src="{{ product.imageUrl }}"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text>
+            <h3>{{ product.merek }} {{ product.model }}</h3>
+          </ion-text>
+          <p>{{ product.price | currency:'Rp. ':'symbol':'3.0' }}</p>
+          <ion-text>
+            <p>Tersedia : {{ product.stok | number }}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      
+    </ion-list>
   </div>
+  <ion-grid *ngIf="!listView" >
+    <ion-row >
+      <ion-col size="6"  *ngFor="let product of products; index as i">
+        <div  [routerLink]="['./', product.id]">
+          <div>
+            <ion-img src="{{ product.imageUrl }}"></ion-img>
+          </div>
+          <ion-label>
+            <ion-text>
+              <h3>{{ product.merek }} {{ product.model }}</h3>
+            </ion-text>
+            <p>{{ product.price | currency:'Rp. ':'symbol':'3.0' }}</p>
+            <ion-text>
+              <p>Tersedia : {{ product.stok | number }}</p>
+            </ion-text>
+          </ion-label>    
+        </div>
+      </ion-col> 
+    </ion-row>
+  </ion-grid>
 </ion-content>

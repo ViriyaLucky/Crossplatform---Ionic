@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="placesMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Discover</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let place of places; index as i">
+    <div *ngIf="i == 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ place.title }}</ion-card-title>
+          <ion-card-subtitle>{{ place.price | currency:"Rp "}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-img src="{{ place.imageUrl }}"></ion-img>
+          <p>{{ place.description }}</p>
+          <ion-button fill="outline" [routerLink]="['./', place.id]">More</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-item *ngIf="i > 0" [routerLink]="['./', place.id]">
+      <ion-thumbnail slot="start">
+        <ion-img src="{{ place.imageUrl }}"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{ place.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
