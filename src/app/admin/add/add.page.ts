@@ -30,7 +30,7 @@ export class AddPage implements OnInit {
         delete send[propName];
       }
     }
-    console.log(send);
+    // console.log(send);
     this.productsService.addProduct(send);
     this.presentToast();
     this.router.navigateByUrl("/admin");
@@ -68,8 +68,8 @@ export class AddPage implements OnInit {
 
   changeTipe($event){
     this.selected = this.product.get('type').value;
-    console.log("dadawdwad");
-    console.log(this.selected);
+    // console.log("dadawdwad");
+    // console.log(this.selected);
     if(this.selected == "RAM"){
       //enable
         this.product.get("speed").setValidators([Validators.required]);

@@ -28,7 +28,7 @@ export class AdminPage implements OnInit {
     }else{
       this.prodList.push(id);
     }
-    console.log(this.prodList);
+    // console.log(this.prodList);
   }
 
   async presentToast(num) {
@@ -58,13 +58,13 @@ export class AdminPage implements OnInit {
         role: 'cancel',
         cssClass: 'secondary',
         handler: (blah) => {
-          console.log('canceled');
+          // console.log('canceled');
         }
       }, {
         text: 'Okay',
         handler: () => {
           this.productsService.deleteProduct(prod.id);
-          console.log(prod);
+          // console.log(prod);
           slidingItem.close();
           this.products = this.productsService.getAllProducts();
         }

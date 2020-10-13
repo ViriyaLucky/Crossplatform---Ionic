@@ -15,7 +15,7 @@ export class EditPage implements OnInit {
   private editedProduct;
   logForm() {
     let send  = this.editedProduct;
-    console.log(send);
+    // console.log(send);
     this.productService.editProduct(send);
     this.presentToast();
     this.router.navigateByUrl("/admin");
@@ -157,7 +157,7 @@ export class EditPage implements OnInit {
       if(!paramMap.has('productId')) {return;}
       const productId = paramMap.get('productId');
       this.editedProduct = this.productService.getProduct(productId);
-      console.log(this.editedProduct);
+      // console.log(this.editedProduct);
       this.cekTipe();
     })
   }

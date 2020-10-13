@@ -25,6 +25,6 @@ export class HomePage {
   ionViewWillEnter(){
     this.products =  this.productsService.getAllProducts();
     this.products = this.products.filter(obj => obj.stok !== 0);
-    console.log(this.products);
+    // console.log(this.products);
   }
 }

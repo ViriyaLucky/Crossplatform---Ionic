@@ -21,7 +21,7 @@ export class ProductDetailPage implements OnInit {
         if(!paramMap.has('productId')) {return;}
         const productId = paramMap.get('productId');
         this.product = this.productService.getProduct(productId);
-        console.log(this.product);
+        // console.log(this.product);
       })
     }
   ionViewWillEnter(){
