@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/api/product.service';
 
 @Component({
@@ -16,10 +17,19 @@ export class EditPage implements OnInit {
     let send  = this.editedProduct;
     console.log(send);
     this.productService.editProduct(send);
+    this.presentToast();
     this.router.navigateByUrl("/admin");
 
   }
-  constructor(private formBuilder: FormBuilder, private productService : ProductService, private router: Router, private activatedRoute: ActivatedRoute,
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Successfuly editted.',
+      duration: 2000,
+      color:"success",
+    });
+    toast.present();
+  }
+  constructor(private formBuilder: FormBuilder,  public toastController: ToastController, private productService : ProductService, private router: Router, private activatedRoute: ActivatedRoute,
     ) { 
       this.product = this.formBuilder.group({
         imageUrl: ['', Validators.required],

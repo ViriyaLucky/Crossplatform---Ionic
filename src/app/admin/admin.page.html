@@ -7,13 +7,13 @@
       <ion-icon slot="start"  *ngIf="!multiSelect" size="large" name="add-outline"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-icon slot="start" (click)="multiSelect = !multiSelect" *ngIf="!multiSelect" size="large" name="create-outline"></ion-icon>
+      <ion-icon slot="start" (click)="multiSelect = !multiSelect" *ngIf="!multiSelect" size="large" name="checkbox-outline"></ion-icon>
     </ion-buttons>
     <ion-buttons *ngIf="multiSelect" slot="end">
       <ion-button slot="start" color="danger" (click)="multiSelect = !multiSelect; prodList.length = 0">Cancel</ion-button>
     </ion-buttons>
     <ion-buttons *ngIf="multiSelect" slot="end">
-      <ion-button slot="start"  [disabled]="prodList.length === 0" (click)="massDelete()" >Done</ion-button>
+      <ion-button slot="start"  [disabled]="prodList.length === 0" (click)="massDelete()" >Delete</ion-button>
     </ion-buttons>
     <ion-title>
       Admin
@@ -32,7 +32,7 @@
         </ion-item-option>
       </ion-item-options>
 
-      <ion-item  [routerLink]="multiSelect ? null : ['./', product.id]">
+      <ion-item  [routerLink]="multiSelect ? null : ['./edit', product.id]">
         <ion-thumbnail slot="start">
           <ion-img src="{{ product.imageUrl }}"></ion-img>
         </ion-thumbnail>

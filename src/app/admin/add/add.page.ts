@@ -59,7 +59,7 @@ export class AddPage implements OnInit {
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Successfuly added.',
-      duration: 22000,
+      duration: 2000,
       color:"success",
     });
     toast.present();
